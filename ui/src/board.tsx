@@ -65,6 +65,8 @@ export function Board({ boards }) {
       .then(() => location.reload());
   };
 
+  let adminp = boards?.find((e) => e.ship === ship)?.boards?.find((e) => e.board === board)?.admin;
+
   return (
     <main className="flex flex-col items-left px-4 space-y-3 justify-start min-h-screen">
       <ChannelNav ship={ship} board={board} boards={boards} />
@@ -114,7 +116,7 @@ export function Board({ boards }) {
                       >
                         [visit thread]
                       </Link>
-                      {deSig(window.ship) === deSig(ship) && (
+                      {(deSig(window.ship) === deSig(ship) || adminp) && (
                         <span
                           className="text-chan-red cursor-pointer hover:underline"
                           onClick={() => deleteThread(each?.post["index"])}
