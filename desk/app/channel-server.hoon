@@ -281,8 +281,8 @@
     |=  c=content
     ?.  ?=(%text -.c)
       ?.  ?=(%url -.c)  c
-      ?.((gte 2.001 (met 3 +.c)) !! c)
-    ?.  (gte 1.001 (met 3 +.c))  !!
+      ?.((gte 5.001 (met 3 +.c)) !! c)
+    ?.  (gte 5.001 (met 3 +.c))  !!
     =/  cancel=(list tape)
       %~  tap  in  ^-  (set tape)
       (~(run in words.banned) |=(@t (cass (trip +<))))

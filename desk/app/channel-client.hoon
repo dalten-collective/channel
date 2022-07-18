@@ -460,10 +460,10 @@
     ==
     ++  check-pic-length
       |=  i=(unit @t)
-      ?~(i %.y (gte 2.001 (met 3 u.i)))
+      ?~(i %.y (gte 5.001 (met 3 u.i)))
     ++  check-post-length
       |=  l=(list content)
-      %+  gte  1.001
+      %+  gte  5.001
       %+  roll  l
       |=  [c=content u=@ud]
       ?+  -.c  !!
