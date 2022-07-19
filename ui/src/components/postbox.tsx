@@ -36,10 +36,11 @@ export default function PostBox({ index, ship, board, className = "" }) {
   }, [file]);
 
   const submitReply = () => {
+    let message = "nice try hackerman ;)\n"
     if ((new TextEncoder().encode(image)).length > 1000) {
-      return window.alert("Image field length exceeds 1000 character limit!");
+      return window.alert(message + "image field length can't be more than 1k characters");
     } else if ((new TextEncoder().encode(reply)).length > 5000) {
-      return window.alert("Text field length exceeds 5000 character limit!")
+      return window.alert(message + "text field length can't be more than 5k characters")
     }
 
     return window.api
