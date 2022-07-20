@@ -36,6 +36,13 @@ export default function PostBox({ index, ship, board, className = "" }) {
   }, [file]);
 
   const submitReply = () => {
+    let message = "nice try hackerman ;)\n"
+    if ((new TextEncoder().encode(image)).length > 1000) {
+      return window.alert(message + "image field length can't be more than 1k characters");
+    } else if ((new TextEncoder().encode(reply)).length > 5000) {
+      return window.alert(message + "text field length can't be more than 5k characters")
+    }
+
     return window.api
       .poke({
         app: "channel-client",
@@ -63,6 +70,7 @@ export default function PostBox({ index, ship, board, className = "" }) {
         placeholder="https://urbit.org/loss.jpg"
         className="outline outline-1 p-3 bg-chan-element"
         onChange={(e) => setImage(e.target.value)}
+        maxLength={1000}
       />
       {client !== null && (
         <input onChange={(e) => setFile(e.target.files)} type="file" />
@@ -71,10 +79,12 @@ export default function PostBox({ index, ship, board, className = "" }) {
       <textarea
         className="outline outline-1 p-3 w-full bg-chan-element max-h-56 h-24"
         onChange={(e) => setReply(e.target.value)}
+        maxLength={5000}
       />
       <button
         className="outline outline-1 outline-gray-300 p-2 bg-chan-element text-chan-red max-w-fit"
-        onClick={submitReply}
+        onClick={
+          submitReply}
       >
         post
       </button>

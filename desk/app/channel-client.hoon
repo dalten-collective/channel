@@ -438,6 +438,8 @@
   ++  add-poast
     |=  [aye=(unit index) i=(unit @t) m=(list content) p=@p b=@tas]
     ^-  (quip card _state)
+    |^
+    ?>  &((check-pic-length i) (check-post-length m))
     =,  enjs:format
     ?~  i
       :_  state
@@ -456,5 +458,20 @@
         :^  %give  %fact  ~[/website]
         json+!>((frond 'status-msg' s+'Poast Sent...'))
     ==
+    ++  check-pic-length
+      |=  i=(unit @t)
+      ?~(i %.y (gte 5.001 (met 3 u.i)))
+    ++  check-post-length
+      |=  l=(list content)
+      %+  gte  5.001
+      %+  roll  l
+      |=  [c=content u=@ud]
+      ?+  -.c  !!
+        %text       (add u (met 3 +.c))
+        %mention    u
+        %reference  u
+        %url        (add u (met 3 +.c))
+      ==
+    --
   --
 --
