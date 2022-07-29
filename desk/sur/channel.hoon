@@ -74,6 +74,7 @@
     ::
       [%ban-words which=(set cord)]                      ::  this will require parsing all content, but could maybe be done in frontend?
       [%ban-sites which=(set cord)]                      ::  ban linking to some urls? also done in front end?
+      [%del-poast index=(list @) board=@tas]             ::  delete a poast from a board
     ::
       [%big-notes notice=@t board=@tas]                  ::  send a notice to users
   ==
@@ -113,6 +114,7 @@
   $%  [%see-hoast ship=@p]                               ::  subscribe to host
       [%bye-hoast ship=@p]                               ::  leave a host
       [%ack-notes note=(set @da) ship=@p board=@tas]     ::  acknowledge a server notice
+      [%del-poast index=(list @) ship=@p board=@tas]     ::  admin-only, delete a poast from a board, on a hoast
     ::
       $:  %add-poast                                     ::  a comment, poast (if index, comment)
           maybe-index=(unit index)
