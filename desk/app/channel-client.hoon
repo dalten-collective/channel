@@ -61,6 +61,7 @@
           %see-hoast  (see-hoast:chemo:snax ship.sac)
           %bye-hoast  (bye-hoast:chemo:snax ship.sac)
           %ack-notes  (ack-notes:chemo:snax note.sac ship.sac board.sac)
+          %del-poast  (del-poast:chemo:snax index.sac ship.sac board.sac)
         ::
             %add-poast
           %:  add-poast:chemo:snax 
@@ -434,6 +435,14 @@
     %=    $
       nl     t.nl
       u.set  u.set(notes (~(del by notes.u.set) i.nl))
+    ==
+  ++  del-poast
+    |=  [i=(list @) s=@p b=@tas]
+    ^-  (quip card _state)
+    :_  state
+    :~  :^  %pass  /chan/try/del/(scot %da now.bol)  %agent
+        =-  [[s %channel-server] %poke %channel-chads -]
+        !>(`chads`[%del-poast i b])
     ==
   ++  add-poast
     |=  [aye=(unit index) i=(unit @t) m=(list content) p=@p b=@tas]
