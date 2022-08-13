@@ -80,7 +80,6 @@
             ==
         =.  contents.wat
           (auto-jannie:moot contents.wat)
-        ::  todo - banned word parsing
         ::  todo - banned site parsing
         =+  new=(add now.bowl ~s2)
         =+  who=(src-in:moot src.bowl)
@@ -93,7 +92,7 @@
             :~  :^  %pass  /chan/post/(scot %da new)  %agent
                 :^  [our.bowl %graph-push-hook]  %poke  %graph-update-3
                 !>  ^-  update
-                [(add now.bowl ~s2) [%add-nodes [our.bowl board.wat] poast]]
+                [new [%add-nodes [our.bowl board.wat] poast]]
             ==
             ::
           =-  %-  my
@@ -260,12 +259,12 @@
       banned-words+a+(turn ~(tap in words.banned) |=(@t s++<))
       banned-sites+a+(turn ~(tap in sites.banned) |=(@t s++<))
     ::
-      bounty+(pairs ~[only+b+only.bounty which+s+which.bounty])
+      bounty+(pairs only+b+only.bounty which+s+which.bounty ~)
       boards+(pairs (turn ~(tap by boards) board-maker))
   ==
   ::
   ++  board-maker
-    |=  [b=@tas [r=resource adm=(set @p) ban=(set @p)]]
+    |=  [b=@tas r=resource adm=(set @p) ban=(set @p)]
     ^-  [@t json]
     :-  b
     %-  pairs
@@ -274,52 +273,57 @@
     ==
   --
 ::
-  ++  auto-jannie
-    |=  lc=(list content)
-    ^-  (list content)
-    =;  roody-poo=(list @t)
-      %+  turn  lc
-      |=  c=content
-      ?.  ?=(%text -.c)  c
-      =/  cancel=(list tape)
-        %~  tap  in  ^-  (set tape)
-        (~(run in words.banned) |=(@t (cass (trip +<))))
-      =+  review=(trip +.c)
-      =+  preview=(cass (trip +.c))
-      =+  rng=~(. og eny.bol)
-      |-
-      ?~  cancel  [%text (crip review)]
-      ?~  maybe-start=(find i.cancel preview)  $(cancel t.cancel)
-      =+  penis=(rads:rng (lent roody-poo))
-      =/  replace=@t
-        (snag -.penis roody-poo)
-      %=    $
-          rng
-        +.penis
-      ::
-          review
-        %+  into
-          (oust [(need maybe-start) (lent i.cancel)] `tape`review)
-        [(need maybe-start) replace]
-      ::
-          preview
-        %+  into
-          (oust [(need maybe-start) (lent i.cancel)] `tape`preview)
-        [(need maybe-start) replace]
-      ==
-      ::
-    :~  'roody-poo'
-        'sigourney'
-        'PENIS'
-        'candy-ass'
-        'VAGINA'
-        'peanut butter'
-        'bring back'
-        'grinman'
-        'triscuits'
-        'is a meme'
-        'ǫ̸̧͍̤̱̼̹̋̐̔̊̎̀n̶̙͍̻̭̩̰̞̱̘͊̀̂́ ̴̨̪͇̠͕̩̦̲̯͎͖̣͚̻̈́̊̅͑̂͛̈́͌̌͝u̵̝͛̅͗͑͒͐̈́̀͝r̶̘͍̖̹̘̟̰̱̥͔̙̜͇̠̿͜b̸̲̦̬͙͖̗̲͙̲̑̉́̄͝i̸̡̮̱͚̾͂̋̒̉̐̀́͐͠͝t̵̯͖͈͈͚̜̭̳̮̊́͂̾̑̽̆́͗͜͠ ̷̗̙̬͓̃͗̇͒̍͠n̴̻̬̜̙̩̠̞͚̹͙̻͠o̴̡̥̻̪̻͎̱̼̜̻͈̥̓͛̀͗̃̉̊͗̅̋̈́̔̐̕͝ ̵̰̥͇͚̦͔̱̻̤̮͈̗͕̩͗͆̄̃̉͂̄̒̀̈́ŏ̷̢̢̡̡̨͖̪̩̰̰̣͍̈́̇̍̾̽̽̈́n̷̫̹̙̝̥͒̇̿̐̋͆̆̕ͅḙ̸͓͙͗̿̄̉͆́̌̇͊̿̓́͘̚̕ ̷̢̣̫̫̘̞̪͈͕̗̥͂́̿͗̆̈́č̶̨̼͈̪̦͕̤̣͇͙̬͈̤̺̏͊͆͑̃ḁ̷̡̳̽̉̆n̶̦̥̱͎̉̉̈́̒̃̐̈́̽ ̸̢͓̙̣̺̠̳̭̌̀͐̊͑̇̽͆̈̓̆͗̚͜h̸͓͚̩̹̠̼̳̿̋͋͒͛e̸̡̧̨̡̧͍͎̲͕̯̯͎̞̬̻̐̌͂̽͐̌͘͝͠͝á̴̧̫̥͇͍͈̰̜̰͊̈̾̽̅̕̚͝r̴̨̛̛͈͓̜̳̺̤̘̺̼͙̀̈́̅͑̀̍̀́͘̚͝ ̴̡̢̰̼̺̐͊͑̒̕͝ͅỳ̶̩̝̭̞̣̦̰̜͓͠͝ͅò̸̢̜̦̰̥̭͖͂͌̀̋́̊̊͘̚̚͝u̴̧̦̻̜̔͐̊̐̉̈̈́͒͘ ̷̢̨̹̘͕̓͌̎͐s̵̨̫̄̑͠ͅç̶͖̦͍̹̣̦̬̳͓̙͍̞͊̈́́̌̚ŗ̶̞͈̲͚͊̌́̍̌͛̕͝e̵̖̪̼̻̦̦͔̤̦̲̖̳̜͗̋̂̓̆̇̿́͐̎͜͠͠ā̶̻͔̟͒̋̋̆͑͒͋͘̕m̴̧̟̦͈̒̋'
+++  auto-jannie
+  |=  lc=(list content)
+  ^-  (list content)
+  =;  roody-poo=(list @t)
+    %+  turn  lc
+    |=  c=content
+    ?.  ?=(%text -.c)
+      ?.  ?=(%url -.c)  c
+      ?.((gte 5.001 (met 3 +.c)) !! c)
+    ?.  (gte 5.001 (met 3 +.c))  !!
+    =/  cancel=(list tape)
+      %~  tap  in  ^-  (set tape)
+      (~(run in words.banned) |=(@t (cass (trip +<))))
+    =+  review=(trip +.c)
+    =+  preview=(cass (trip +.c))
+    =+  rng=~(. og eny.bol)
+    |-
+    ?~  cancel  [%text (crip review)]
+    ?~  maybe-start=(find i.cancel preview)
+      $(cancel t.cancel)
+    =+  penis=(rads:rng (lent roody-poo))
+    =/  replace=@t
+      (snag -.penis roody-poo)
+    %=    $
+        rng
+      +.penis
+    ::
+        review
+      %+  into
+        (oust [(need maybe-start) (lent i.cancel)] `tape`review)
+      [(need maybe-start) replace]
+    ::
+        preview
+      %+  into
+        (oust [(need maybe-start) (lent i.cancel)] `tape`preview)
+      [(need maybe-start) replace]
     ==
+    ::
+  :~  'roody-poo'
+      'sigourney'
+      'PENIS'
+      'candy-ass'
+      'VAGINA'
+      'peanut butter'
+      'bring back'
+      'grinman'
+      'triscuits'
+      'is a meme'
+      'ǫ̸̧͍̤̱̼̹̋̐̔̊̎̀n̶̙͍̻̭̩̰̞̱̘͊̀̂́ ̴̨̪͇̠͕̩̦̲̯͎͖̣͚̻̈́̊̅͑̂͛̈́͌̌͝u̵̝͛̅͗͑͒͐̈́̀͝r̶̘͍̖̹̘̟̰̱̥͔̙̜͇̠̿͜b̸̲̦̬͙͖̗̲͙̲̑̉́̄͝i̸̡̮̱͚̾͂̋̒̉̐̀́͐͠͝t̵̯͖͈͈͚̜̭̳̮̊́͂̾̑̽̆́͗͜͠ ̷̗̙̬͓̃͗̇͒̍͠n̴̻̬̜̙̩̠̞͚̹͙̻͠o̴̡̥̻̪̻͎̱̼̜̻͈̥̓͛̀͗̃̉̊͗̅̋̈́̔̐̕͝ ̵̰̥͇͚̦͔̱̻̤̮͈̗͕̩͗͆̄̃̉͂̄̒̀̈́ŏ̷̢̢̡̡̨͖̪̩̰̰̣͍̈́̇̍̾̽̽̈́n̷̫̹̙̝̥͒̇̿̐̋͆̆̕ͅḙ̸͓͙͗̿̄̉͆́̌̇͊̿̓́͘̚̕ ̷̢̣̫̫̘̞̪͈͕̗̥͂́̿͗̆̈́č̶̨̼͈̪̦͕̤̣͇͙̬͈̤̺̏͊͆͑̃ḁ̷̡̳̽̉̆n̶̦̥̱͎̉̉̈́̒̃̐̈́̽ ̸̢͓̙̣̺̠̳̭̌̀͐̊͑̇̽͆̈̓̆͗̚͜h̸͓͚̩̹̠̼̳̿̋͋͒͛e̸̡̧̨̡̧͍͎̲͕̯̯͎̞̬̻̐̌͂̽͐̌͘͝͠͝á̴̧̫̥͇͍͈̰̜̰͊̈̾̽̅̕̚͝r̴̨̛̛͈͓̜̳̺̤̘̺̼͙̀̈́̅͑̀̍̀́͘̚͝ ̴̡̢̰̼̺̐͊͑̒̕͝ͅỳ̶̩̝̭̞̣̦̰̜͓͠͝ͅò̸̢̜̦̰̥̭͖͂͌̀̋́̊̊͘̚̚͝u̴̧̦̻̜̔͐̊̐̉̈̈́͒͘ ̷̢̨̹̘͕̓͌̎͐s̵̨̫̄̑͠ͅç̶͖̦͍̹̣̦̬̳͓̙͍̞͊̈́́̌̚ŗ̶̞͈̲͚͊̌́̍̌͛̕͝e̵̖̪̼̻̦̦͔̤̦̲̖̳̜͗̋̂̓̆̇̿́͐̎͜͠͠ā̶̻͔̟͒̋̋̆͑͒͋͘̕m̴̧̟̦͈̒̋'
+      'none of your features will be included'
+  ==
 ::
 ++  ru
   |%
