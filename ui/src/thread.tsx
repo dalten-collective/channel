@@ -48,6 +48,7 @@ export function Thread({boards}) {
 
   let op_text;
   let op_url;
+  let adminp = boards?.find((e) => e.ship === ship)?.boards?.find((e) => e.board === board)?.admin;
 
   return (
     <main className="flex flex-col items-left px-4 space-y-3 justify-start min-h-screen">
@@ -77,7 +78,8 @@ export function Thread({boards}) {
         </div>
       </div>
 
-      {Object.entries(thread || {})
+      {
+      Object.entries(thread || {})
         .sort(([aKey, aValue], [bKey, bValue]) => {
           return aValue?.post?.["time-sent"] > bValue?.post?.["time-sent"]
             ? 1
@@ -104,7 +106,7 @@ export function Thread({boards}) {
                 })}
               </div>
               <div className="bg-chan-border text-chan-bg font-bold flex md:flex-row flex-col md:items-center md:justify-between p-1">
-              {deSig(window.ship) === deSig(ship) && <span className="text-chan-red mr-2 cursor-pointer" onClick={() => deletePost(value?.children?.[1].post?.["index"])}>delete</span>}
+              {(deSig(window.ship) === deSig(ship) || adminp) && <span className="text-chan-red mr-2 cursor-pointer hover:underline" onClick={() => deletePost(value?.children?.[1].post?.["index"])}>delete</span>}
                           <p className="font-bold text-xs">
                             {new Date(
                               value?.post?.["time-sent"]
