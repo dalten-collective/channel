@@ -30,7 +30,7 @@
     =^  cards  state
       (see-hoast:chemo:snax our.bowl)
     =^  dracs  state
-      (see-hoast:chemo:snax ~sitden-sonnet)
+      (see-hoast:chemo:snax ~winder-dapsym)
     :_  this
     :_  (welp cards dracs)
     :^  %pass  /updates  %agent
