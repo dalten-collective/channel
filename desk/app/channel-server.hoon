@@ -66,6 +66,7 @@
         ::
           %ban-words  (ban-words:su-poke:moot which.cad)
           %ban-sites  (ban-sites:su-poke:moot which.cad)
+          %del-poast  (del-poast:su-poke:moot index.cad board.cad)
         ::
           %big-notes  (big-notes:su-poke:moot notice.cad board.cad)
         ==
@@ -344,6 +345,12 @@
   ++  group-keys
     ^-  resources
     .^(resources %gy (welp group-path [%groups ~]))
+  ++  node-exist
+    |=  [b=@tas i=(list @)]
+    ^-  ?
+    =/  res=path  /(scot %p our.bol)/[b]
+    =/  ind=path  (turn i |=(a=@ (scot %ud a)))
+    .^(? %gx ;:(welp group-path /graph res /node/exists ind))
   ::
   ++  admit-super
     ^-  ?
@@ -675,6 +682,16 @@
     ^-  (quip card _state)
     ?>  admit-super:ru
     `state
+  ++  del-poast
+    |=  [i=(list @) b=@tas]
+    ^-  (quip card _state)
+    ?>  (admit-admin:ru b)
+    ?>  (node-exist:ru b i)
+    :_  state
+    :~  :^  %pass   /dirty/delete/(scot %da now.bol)  %agent
+        =-  [[our.bol %graph-store] %poke %graph-update-0 -]
+        !>(`update`[now.bol [%remove-posts [our.bol b] (sy ~[i])]])
+    ==
   ++  big-notes
     |=  [no=@t b=@tas]
     ^-  (quip card _state)
