@@ -23,9 +23,10 @@
           [%bye-hoast (se %p)]
         ::
           :-  %ack-notes
-          (ot ~[['note' (as (se %da))] ['ship' (se %p)] ['board' (se %tas)]])
+          (ot ~[note+(as (se %da)) ship+(se %p) board+(se %tas)])
+        ::
           :-  %del-poast
-          (ot ~[['index' (su (star dem)):dejs-soft:format] ['ship' (se %p)] ['board' (se %tas)]])
+          (ot ~[index+(su (star dem)) ship+(se %p) board+(se %tas)])
         ::
           :-  %add-poast
           %-  ot
