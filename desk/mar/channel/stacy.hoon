@@ -26,7 +26,11 @@
           (ot ~[note+(as (se %da)) ship+(se %p) board+(se %tas)])
         ::
           :-  %del-poast
-          (ot ~[index+(ar ni) ship+(se %p) board+(se %tas)])
+          %-  ot
+          :~  index+(su ;~(pfix fas (more fas dem)))
+              ship+(se %p)
+              board+(se %tas)
+          ==
         ::
           :-  %add-poast
           %-  ot

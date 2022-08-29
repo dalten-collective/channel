@@ -35,6 +35,9 @@
           [%ban-sites (ot ~[['which' (as so)] ['board' (se %tas)]])]
         ::
           [%big-notes (ot ~[['notice' so] ['board' (se %tas)]])]
+        ::
+          :-  %del-poast
+          (ot ~[index+(su ;~(pfix fas (more fas dem))) board+(se %tas)])
       ==
     --
   --
