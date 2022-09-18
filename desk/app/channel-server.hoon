@@ -350,7 +350,7 @@
     ^-  ?
     =/  res=path  /(scot %p our.bol)/[b]
     =/  ind=path  (turn i |=(a=@ (scot %ud a)))
-    .^(? %gx ;:(welp group-path /graph res /node/exists ind))
+    .^(? %gx ;:(welp graph-path /graph res /node/exists ind /noun))
   ::
   ++  admit-super
     ^-  ?
@@ -689,7 +689,7 @@
     ?>  (node-exist:ru b i)
     :_  state
     :~  :^  %pass   /dirty/delete/(scot %da now.bol)  %agent
-        =-  [[our.bol %graph-store] %poke %graph-update-0 -]
+        =-  [[our.bol %graph-push-hook] %poke %graph-update-3 -]
         !>(`update`[now.bol [%remove-posts [our.bol b] (sy ~[i])]])
     ==
   ++  big-notes
